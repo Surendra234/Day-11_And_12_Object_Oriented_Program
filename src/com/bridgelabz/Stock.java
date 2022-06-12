@@ -11,39 +11,64 @@ public class Stock {
 
         // Creating the Object
         StockFunction stockFunction = new StockFunction();
-        AccountTest accountTest = new AccountTest();
 
         boolean isExit = false;
 
         while(!isExit) {
-            System.out.println("\nEnter 1. Add Stock \nEnter 2. Print Report \nEnter 3. Check Account balance " +
-                    "\nEnter 4. Credit Amount \nEnter 5. Debit Amount  \nEnter 6. Exit !");
+
+            System.out.println("\nEnter 1. Buy Share\nEnter 2. Sell Share"+ "\nEnter 3. Credit Amount " +
+                    "\nEnter 4. Debit Amount \nEnter 5. Account balance \nEnter 6. Print Report " +
+                    "\nEnter 7. Create Stock \nEnter 8. Exit !");
 
             int choice = sc.nextInt();
+            int amount;
+            String symbol;
+
             switch(choice) {
 
                 case 1:
-                    stockFunction.addStock();
-                    System.out.println("=============================================================================");
+                    System.out.println("Which stock you want to Buy :");
+                    symbol = sc.next();
+                    System.out.println("Enter the Amount for buy the share :");
+                    amount = sc.nextInt();
+                    stockFunction.buy(amount,symbol);
                     break;
 
                 case 2:
-                    stockFunction.printReport();
+                    System.out.println("Which stock you want to Sell :");
+                    symbol = sc.next();
+                    System.out.println("Enter the price to sell the share :");
+                    amount = sc.nextInt();
+                    stockFunction.sell(amount,symbol);
                     break;
 
                 case 3:
-                    accountTest.checkBalance();
+                    System.out.println("Enter the Amount which you want to deposit : ");
+                    amount = sc.nextInt();
+                    AccountTest.creditBalance(amount);
                     break;
 
                 case 4:
-                    accountTest.creditBalance();
+                    System.out.println("Enter the Amount you want to Withdraws : ");
+                    amount = sc.nextInt();
+                    AccountTest.debitBalance(amount);
                     break;
 
                 case 5:
-                    accountTest.debitBalance();
+                    stockFunction.valueOf();
                     break;
 
                 case 6:
+                    stockFunction.printReport();
+                    break;
+
+                case 7:
+                    System.out.println("Enter the name of stock ");
+                    String name = sc.next();
+                    stockFunction.createStock(name);
+                    break;
+
+                case 8:
                     System.out.println("Exit !");
                     isExit = true;
                     break;

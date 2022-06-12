@@ -4,36 +4,36 @@ import java.util.Scanner;
 
 public class AccountTest {
 
-    static double accountBalance = 0;
-    Scanner sc = new Scanner(System.in);
+    private static double accountBalance = 0;
+    static Scanner sc = new Scanner(System.in);
 
-    // Method to check balance
-    public void checkBalance() {
-
-        System.out.println("Account balance : " +accountBalance);
-    }
 
     // Method to credit amount
-    public void creditBalance() {
+    public static void creditBalance(double amount) {
 
-        System.out.println("Enter the Amount which you want to deposit in your Account :");
-        long testCredit = sc.nextLong();
-        accountBalance = accountBalance + testCredit;
 
-        System.out.println(testCredit +" Credit successfully" +" Account balance : " +accountBalance);
+        accountBalance += amount;
+
+        System.out.println(amount +" Credit successfully" +" Account balance : " +accountBalance);
     }
 
     // Method to debit balance
-    public void debitBalance() {
+    public static void debitBalance(double amount) {
 
-        System.out.println("Enter the amount how much you want to Withdraws : ");
-        double debitAmount = sc.nextDouble();
-
-        if(debitAmount <= accountBalance) {
-            double testDebit = accountBalance - debitAmount;
-            System.out.println(debitAmount + " Debit successfully " +"Account balance : " +testDebit);
+        if(amount <= accountBalance) {
+            double testDebit = accountBalance - amount;
+            System.out.println(amount + " Debit successfully " +"Account balance : " +testDebit);
         }
         else
             System.out.println("Account Balance is low");
+    }
+
+    // Getter and Setter Method
+    public static double getAccountBalance() {
+        return accountBalance;
+    }
+
+    public static void setAccountBalance(double accountBalance) {
+        AccountTest.accountBalance = accountBalance;
     }
 }
